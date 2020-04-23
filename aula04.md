@@ -43,8 +43,9 @@
 
 * Retorna uma nova relação, selecionando as colunas especificadas da relação original.
 * Note que isso pode **excluir a coluna que contem a chave da relação**. Se há replicação no resultado (caso não selecionamos a coluna com a chave), o **project exclui as repetidas**. 
-  * Isso é feito pra evitar inconsistências ao performar um project.
-
+  
+* Isso é feito pra evitar inconsistências ao performar um project.
+  
 * Características
   * A quantidade de tuplas resultantes sera menor ou igual a relação orignal
   * **NÂO** é comutativa.
@@ -74,3 +75,42 @@
 
 * É um produto cartesiano seguido por seleção.
 * Utilizado pra combinar informações de duas ou mais relações.
+
+### Operador DIVISION
+
+* O JOIN possui uma limitação: ele é bem custoso, por fazer um produto cartesiano entre duas tabelas.
+  * Se uma tabela tiver um grau de relacionamento maior que 4, fica muito custoso.
+
+* O DIVISION seleciona todos elementos de A que respeitem uma condição (Não ficou muito claro....)
+
+  * Mas essa condição, ao contrario de um SELECT, não é uma condição booleana que é passada pelas colunas (selecione todos funcionarios que ganham mais que R$5000: essa verificação é feita olhando a coluna SALARIO e olhamos tupla a tupla). E sim uma outra tabela: Feito um join, procurar um conjunto de tuplas que possuem um outro padrão especificado em uma outra tabela
+    * Ex: encontre funcionarios que tabelam em todos projetos
+      * TODOS_PROJETOS = PROJECT_(PROJETOS)(EMPREGADOS)
+      * TRABALHADORES = DIVISION (EMPREGADOS, TODOS_PROJETOS)
+
+  ***
+
+  ### Funções de agregação
+
+  * Recebem um conjunto de tuplas e retornam um único valor
+
+    * SUM
+    * AVERAGE
+    * MAXIMUM
+    * MINIMUM
+    * COUNT
+
+  * Para usar uma função agragada, utilizamos o operador FUNCTION
+
+  * Especificamos um **atributo de agregamento** para especificar o que devemos agregar
+
+    
+
+
+
+***
+
+## TAREFA
+
+* Fazer a lista do fim do capítulo 7 da apostila.
+* Estudar inner join, outer join, left join, right join
